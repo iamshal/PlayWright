@@ -29,7 +29,7 @@ jobs:
         
     - name: Run all tests with extended timeouts
       working-directory: playwright-in-java-sample-code-sample-code-module-16-allure-reporting
-      run: mvn clean verify -f pom-ci.xml -Dplaywright.timeout=120000 -Dplaywright.actionTimeout=60000
+      run: mvn clean test -f pom-ci.xml -Dplaywright.timeout=120000 -Dplaywright.actionTimeout=60000
       
     - name: Upload test results
       uses: actions/upload-artifact@v4
