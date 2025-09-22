@@ -1,6 +1,6 @@
 FROM maven:3.9.6-openjdk-17
 
-# Install Playwright dependencies
+# Install system dependencies
 RUN apt-get update && apt-get install -y \
     wget \
     gnupg \
@@ -18,7 +18,8 @@ COPY src ./src
 # Install Playwright browsers
 RUN mvn exec:java -e -Dexec.mainClass="com.microsoft.playwright.CLI" -Dexec.args="install"
 
-# Compile and run tests
+# Compile the project
 RUN mvn clean compile
 
-CMD ["mvn", "verify"]
+# Run tests
+CMD ["mvn", "verify", "-f", "pom-ci.xml"]

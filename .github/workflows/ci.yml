@@ -28,7 +28,8 @@ jobs:
         restore-keys: ${{ runner.os }}-m2
         
     - name: Run tests with Maven
-      run: cd playwright-in-java-sample-code-sample-code-module-16-allure-reporting && mvn clean verify
+      working-directory: playwright-in-java-sample-code-sample-code-module-16-allure-reporting
+      run: mvn clean verify -f pom-ci.xml
       
     - name: Upload test results
       uses: actions/upload-artifact@v4

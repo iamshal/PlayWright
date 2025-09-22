@@ -18,12 +18,16 @@ jobs:
       uses: docker/setup-buildx-action@v3
       
     - name: Build Docker image
-      run: cd playwright-in-java-sample-code-sample-code-module-16-allure-reporting && docker build -t playwright-tests .
+      working-directory: playwright-in-java-sample-code-sample-code-module-16-allure-reporting
+      run: docker build -t playwright-tests .
       
-    - name: Run tests in Docker
+    - name: Create directories
       run: |
         mkdir -p playwright-in-java-sample-code-sample-code-module-16-allure-reporting/target
         mkdir -p allure-results
+        
+    - name: Run tests in Docker
+      run: |
         docker run --rm \
           -v ${{ github.workspace }}/playwright-in-java-sample-code-sample-code-module-16-allure-reporting/target:/app/target \
           -v ${{ github.workspace }}/allure-results:/app/target/allure-results \
