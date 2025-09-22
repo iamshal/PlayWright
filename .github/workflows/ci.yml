@@ -36,8 +36,8 @@ jobs:
       with:
         name: test-results
         path: |
-          target/allure-results/
-          target/surefire-reports/
+          target/
+        if-no-files-found: warn
           
     - name: Generate Allure Report
       uses: simple-elf/allure-report-action@master
@@ -47,3 +47,4 @@ jobs:
         allure_history: allure-history
         gh_pages: gh-pages
         allure_report_url: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        fail_on_missing_results: false
