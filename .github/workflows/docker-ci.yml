@@ -22,10 +22,19 @@ jobs:
       
     - name: Run tests in Docker
       run: |
+        mkdir -p playwright-in-java-sample-code-sample-code-module-16-allure-reporting/target
+        mkdir -p allure-results
         docker run --rm \
           -v ${{ github.workspace }}/playwright-in-java-sample-code-sample-code-module-16-allure-reporting/target:/app/target \
           -v ${{ github.workspace }}/allure-results:/app/target/allure-results \
           playwright-tests
+        
+    - name: List created files
+      run: |
+        echo "Files in target directory:"
+        ls -la playwright-in-java-sample-code-sample-code-module-16-allure-reporting/target/ || echo "Target directory not found"
+        echo "Files in allure-results directory:"
+        ls -la allure-results/ || echo "Allure-results directory not found"
         
     - name: Upload test results
       uses: actions/upload-artifact@v4
