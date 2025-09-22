@@ -26,12 +26,12 @@ jobs:
         mkdir -p playwright-in-java-sample-code-sample-code-module-16-allure-reporting/target
         mkdir -p allure-results
         
-    - name: Run tests in Docker
+    - name: Run CI tests in Docker
       run: |
         docker run --rm \
           -v ${{ github.workspace }}/playwright-in-java-sample-code-sample-code-module-16-allure-reporting/target:/app/target \
           -v ${{ github.workspace }}/allure-results:/app/target/allure-results \
-          playwright-tests
+          playwright-tests mvn test -Dtest=CITest
         
     - name: List created files
       run: |

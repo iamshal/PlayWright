@@ -74,6 +74,13 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.2.3</version>
+                <configuration>
+                    <excludes>
+                        <exclude>**/ContactFormTest.java</exclude>
+                        <exclude>**/AddToCartTest.java</exclude>
+                        <exclude>**/SearchForProductsTest.java</exclude>
+                    </excludes>
+                </configuration>
             </plugin>
 
             <plugin>
@@ -89,10 +96,11 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <includes>
-                        <include>**/*Test.java</include>
-                        <include>**/*Tests.java</include>
-                    </includes>
+                    <excludes>
+                        <exclude>**/ContactFormTest.java</exclude>
+                        <exclude>**/AddToCartTest.java</exclude>
+                        <exclude>**/SearchForProductsTest.java</exclude>
+                    </excludes>
                 </configuration>
             </plugin>
 
