@@ -1,10 +1,9 @@
 package com.serenitydojo.playwright.toolshop.contact;
 
 import com.microsoft.playwright.Page;
-import com.microsoft.playwright.junit.UsePlaywright;
 import com.microsoft.playwright.options.AriaRole;
 import com.serenitydojo.playwright.toolshop.catalog.pageobjects.NavBar;
-import com.serenitydojo.playwright.toolshop.fixtures.ChromeHeadlessOptions;
+import com.serenitydojo.playwright.toolshop.fixtures.BaseTest;
 import com.serenitydojo.playwright.toolshop.fixtures.TakesFinalScreenshot;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
@@ -23,8 +22,7 @@ import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertTha
 
 @DisplayName("Contact form")
 @Feature("Contacts")
-@UsePlaywright(ChromeHeadlessOptions.class)
-public class ContactFormTest implements TakesFinalScreenshot {
+public class ContactFormTest extends BaseTest implements TakesFinalScreenshot {
 
     ContactForm contactForm;
     NavBar navigate;
