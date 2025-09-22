@@ -22,9 +22,6 @@ public class ChromeHeadlessOptions implements OptionsFactory {
                                     "--ignore-certificate-errors-spki-list"
                                 ))
                 ).setHeadless(true)
-                .setTestIdAttribute("data-test")
-                .setTimeout(60000)
-                .setActionTimeout(30000)
-                .setNavigationTimeout(60000);
+                .setTestIdAttribute("data-test");
     }
 }
