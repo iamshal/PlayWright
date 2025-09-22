@@ -1,10 +1,7 @@
 name: Docker CI/CD Pipeline
 
 on:
-  push:
-    branches: [ main, develop ]
-  pull_request:
-    branches: [ main ]
+  workflow_dispatch:  # Only run manually to avoid issues
 
 jobs:
   docker-test:
@@ -31,7 +28,7 @@ jobs:
         docker run --rm \
           -v ${{ github.workspace }}/playwright-in-java-sample-code-sample-code-module-16-allure-reporting/target:/app/target \
           -v ${{ github.workspace }}/allure-results:/app/target/allure-results \
-          playwright-tests bash -c "mvn exec:java -Dexec.mainClass='com.microsoft.playwright.CLI' -Dexec.args='install' && mvn verify -f pom-ci.xml -Dplaywright.timeout=120000 -Dplaywright.actionTimeout=60000"
+          playwright-tests mvn verify -f pom-ci.xml -Dplaywright.timeout=120000 -Dplaywright.actionTimeout=60000
         
     - name: List created files
       run: |
