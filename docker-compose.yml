@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  playwright-tests:
+    build: .
+    volumes:
+      - ./target:/app/target
+      - ./allure-results:/app/target/allure-results
+    environment:
+      - DISPLAY=:99
+    command: mvn verify

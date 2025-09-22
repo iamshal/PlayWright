@@ -1,0 +1,45 @@
+name: Docker CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  docker-test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v3
+      
+    - name: Build Docker image
+      run: docker build -t playwright-tests .
+      
+    - name: Run tests in Docker
+      run: |
+        docker run --rm \
+          -v ${{ github.workspace }}/target:/app/target \
+          -v ${{ github.workspace }}/allure-results:/app/target/allure-results \
+          playwright-tests
+        
+    - name: Upload test results
+      uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: docker-test-results
+        path: |
+          target/allure-results/
+          allure-results/
+          
+    - name: Generate Allure Report
+      uses: simple-elf/allure-report-action@master
+      if: always()
+      with:
+        allure_results: target/allure-results
+        allure_history: allure-history
+        gh_pages: gh-pages
