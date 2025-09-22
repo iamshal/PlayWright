@@ -18,12 +18,12 @@ jobs:
       uses: docker/setup-buildx-action@v3
       
     - name: Build Docker image
-      run: docker build -t playwright-tests .
+      run: cd playwright-in-java-sample-code-sample-code-module-16-allure-reporting && docker build -t playwright-tests .
       
     - name: Run tests in Docker
       run: |
         docker run --rm \
-          -v ${{ github.workspace }}/target:/app/target \
+          -v ${{ github.workspace }}/playwright-in-java-sample-code-sample-code-module-16-allure-reporting/target:/app/target \
           -v ${{ github.workspace }}/allure-results:/app/target/allure-results \
           playwright-tests
         
@@ -33,7 +33,7 @@ jobs:
       with:
         name: docker-test-results
         path: |
-          target/
+          playwright-in-java-sample-code-sample-code-module-16-allure-reporting/target/
           allure-results/
         if-no-files-found: warn
           
@@ -41,7 +41,7 @@ jobs:
       uses: simple-elf/allure-report-action@master
       if: always()
       with:
-        allure_results: target/allure-results
+        allure_results: playwright-in-java-sample-code-sample-code-module-16-allure-reporting/target/allure-results
         allure_history: allure-history
         gh_pages: gh-pages
         fail_on_missing_results: false

@@ -28,7 +28,7 @@ jobs:
         restore-keys: ${{ runner.os }}-m2
         
     - name: Run tests with Maven
-      run: mvn clean verify
+      run: cd playwright-in-java-sample-code-sample-code-module-16-allure-reporting && mvn clean verify
       
     - name: Upload test results
       uses: actions/upload-artifact@v4
@@ -36,14 +36,14 @@ jobs:
       with:
         name: test-results
         path: |
-          target/
+          playwright-in-java-sample-code-sample-code-module-16-allure-reporting/target/
         if-no-files-found: warn
           
     - name: Generate Allure Report
       uses: simple-elf/allure-report-action@master
       if: always()
       with:
-        allure_results: target/allure-results
+        allure_results: playwright-in-java-sample-code-sample-code-module-16-allure-reporting/target/allure-results
         allure_history: allure-history
         gh_pages: gh-pages
         allure_report_url: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
