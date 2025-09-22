@@ -46,4 +46,4 @@ jobs:
         allure_results: playwright-in-java-sample-code-sample-code-module-16-allure-reporting/target/allure-results
         allure_history: allure-history
         gh_pages: gh-pages
-        allure_report_url: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        report_url: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
