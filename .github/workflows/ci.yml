@@ -47,4 +47,3 @@ jobs:
         allure_history: allure-history
         gh_pages: gh-pages
         allure_report_url: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
-        fail_on_missing_results: false

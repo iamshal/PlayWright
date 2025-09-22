@@ -44,4 +44,3 @@ jobs:
         allure_results: playwright-in-java-sample-code-sample-code-module-16-allure-reporting/target/allure-results
         allure_history: allure-history
         gh_pages: gh-pages
-        fail_on_missing_results: false
