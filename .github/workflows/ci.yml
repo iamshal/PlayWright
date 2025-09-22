@@ -41,7 +41,8 @@ jobs:
       with:
         name: test-results
         path: |
-          playwright-in-java-sample-code-sample-code-module-16-allure-reporting/target/
+          playwright-in-java-sample-code-sample-code-module-16-allure-reporting/target/surefire-reports/
+          playwright-in-java-sample-code-sample-code-module-16-allure-reporting/target/allure-results/
         if-no-files-found: warn
           
     - name: Generate Allure Report
