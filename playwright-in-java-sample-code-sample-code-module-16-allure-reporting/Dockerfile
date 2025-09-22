@@ -15,8 +15,7 @@ RUN mvn dependency:go-offline -B
 # Copy source code
 COPY src ./src
 
-# Install Playwright browsers
-RUN mvn exec:java -e -Dexec.mainClass="com.microsoft.playwright.CLI" -Dexec.args="install"
+# Skip Playwright browser installation - will be installed at runtime
 
 # Compile the project
 RUN mvn clean compile
